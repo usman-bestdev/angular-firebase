@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "angular-firebase-73734": {
+      "hosting": {
+        "angular-firebase": [
+          "angular-firebase-73734"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "angular-firebase-73734"
+  }
+}

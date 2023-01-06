@@ -1,0 +1,49 @@
+<div class="displayTable">
+  <div class="displayTableCell">
+    <div class="authBlock">
+      <h3>Sign In</h3>
+      <div class="formGroup">
+        <input
+          #userName
+          class="formControl"
+          placeholder="Username"
+          required
+          type="text"
+        />
+      </div>
+
+      <div class="formGroup">
+        <input
+          #userPassword
+          class="formControl"
+          placeholder="Password"
+          required
+          type="password"
+        />
+      </div>
+
+      <!-- Calling SignIn Api from AuthService -->
+      <div class="formGroup">
+        <input
+          (click)="logIn(userName.value, userPassword.value)"
+          class="btn btnPrimary"
+          type="button"
+          value="Log in"
+        />
+      </div>
+
+
+    </div>
+
+    <div class="redirectToLogin">
+      <span
+      >Don't have an account?<span
+        class="redirect"
+        routerLink="/sign-up"
+      >
+          Sign Up</span
+      ></span
+      >
+    </div>
+  </div>
+</div>
