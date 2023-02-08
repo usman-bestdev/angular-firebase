@@ -7,6 +7,7 @@ import {AuthenticationService} from "../authentication.service";
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent {
+  sideBar = false
 constructor(public authService: AuthenticationService) {
 }
 }

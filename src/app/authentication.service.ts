@@ -6,7 +6,8 @@ import {Router} from '@angular/router';
   providedIn: 'root',
 })
 export class AuthenticationService {
-  authToken: string = ''
+  authToken: string = '';
+  isLoading = false
   constructor(
     public afAuth: AngularFireAuth, // Inject Firebase auth service
     public router: Router,
@@ -14,11 +15,13 @@ export class AuthenticationService {
   }
 
   // Sign in with email/password
-  SignIn(email: string, password: string) {
+  signIn(email: string, password: string) {
+    this.isLoading = true;
     return this.afAuth
       .signInWithEmailAndPassword(email, password)
       .then((result) => {
         if (result) {
+          this.isLoading = false;
           let user: any;
           user = result?.user?.multiFactor
           this.authToken = user.user.accessToken
@@ -26,22 +29,26 @@ export class AuthenticationService {
         }
       })
       .catch((error) => {
+        this.isLoading = false;
         window.alert(error.message);
       });
   }
 
   // Sign up with email/password
   signUp(email: string, password: string) {
+    this.isLoading = true;
     return this.afAuth
       .createUserWithEmailAndPassword(email, password)
       .then((result) => {
         if (result) {
+          this.isLoading = false;
           window.alert('SignUp Success');
         }
         /* Call the SendVerificaitonMail() function when new user sign
         up and returns promise */
       })
       .catch((error) => {
+        this.isLoading = false;
         window.alert(error.message);
       });
   }

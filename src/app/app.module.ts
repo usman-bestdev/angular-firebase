@@ -15,6 +15,7 @@ import {AngularFireAuthModule} from '@angular/fire/compat/auth';
 import {AuthenticationService} from "./authentication.service";
 import {DashboardComponent} from './dashboard/dashboard.component';
 import {AuthGuard} from "./guard/auth.guard";
+import {MatProgressSpinner, MatProgressSpinnerModule} from "@angular/material/progress-spinner";
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import {AuthGuard} from "./guard/auth.guard";
     FormsModule,
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireAuthModule,
+    MatProgressSpinnerModule
   ],
   providers: [
     AuthenticationService, AuthGuard

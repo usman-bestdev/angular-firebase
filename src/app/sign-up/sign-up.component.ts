@@ -19,6 +19,10 @@ export class SignUpComponent {
    * @constructor
    */
   signUp(email: string, password: string) {
-    this.authService.signUp(email, password)
+    if (email && password) {
+      this.authService.signUp(email, password)
+    } else {
+      window.alert('Both Fields are Required');
+    }
   }
 }

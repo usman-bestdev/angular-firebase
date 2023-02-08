@@ -5,31 +5,36 @@
 
       <div class="formGroup">
         <input
-          type="email"
+          #userEmail
           class="formControl"
           placeholder="Email Address"
-          #userEmail
           required
+          type="email"
         />
       </div>
 
       <div class="formGroup">
         <input
-          type="password"
+          #userPwd
           class="formControl"
           placeholder="Password"
-          #userPwd
           required
+          type="password"
         />
       </div>
 
       <div class="formGroup">
         <input
-          type="button"
-          class="btn btnPrimary"
-          value="Sign Up"
           (click)="signUp(userEmail.value, userPwd.value)"
+          *ngIf="!authService.isLoading; else loadingTemplate"
+          class="btn btnPrimary"
+          type="button"
+          value="Sign Up"
         />
+        <ng-template #loadingTemplate>
+          <mat-progress-spinner class="ml" diameter="40" mode="indeterminate"
+          ></mat-progress-spinner>
+        </ng-template>
       </div>
     </div>
 

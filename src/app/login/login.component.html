@@ -26,10 +26,15 @@
       <div class="formGroup">
         <input
           (click)="logIn(userName.value, userPassword.value)"
+          *ngIf="!authService.isLoading; else loadingTemplate"
           class="btn btnPrimary"
           type="button"
           value="Log in"
         />
+        <ng-template #loadingTemplate>
+          <mat-progress-spinner class="ml" diameter="40" mode="indeterminate"
+          ></mat-progress-spinner>
+        </ng-template>
       </div>
 
 

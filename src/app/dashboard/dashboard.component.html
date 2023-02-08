@@ -1,7 +1,10 @@
 <!-- Top navigation -->
 <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-  <a class="navbar-brand col-sm-3 col-md-2 mr-0" style="background-color: #3F51B5; cursor: pointer">
-    <img class="brand-logo" src="assets/IDN-logo.png" alt="positronX.io Logo">
+  <a class="navbar-brand col-sm-3 col-md-2 mr-0" style="background-color: #a9ecdb; cursor: pointer">
+    <!--    <img class="brand-logo" src="assets/IDN-logo.png" alt="positronX.io Logo">-->
+    <button (click)="sideBar = !sideBar" class="btn">
+      <mat-icon>menu</mat-icon>
+    </button>
   </a>
 </nav>
 
@@ -9,7 +12,7 @@
 <div class="container-fluid">
   <div class="row">
 
-    <nav class="col-md-2 d-md-block bg-light sidebar">
+    <nav *ngIf="sideBar" class="col-md-2 d-md-block bg-light sidebar">
       <div class="sidebar-sticky">
         <ul class="nav flex-column">
           <li class="nav-item">
@@ -19,8 +22,8 @@
           </li>
           <!-- Calling SignOut() Api from AuthService -->
           <li class="nav-item">
-            <a class="nav-link" routerLink="/login" >
-              <i class="fas fa-sign-out-alt" (click)="authService.authToken = ''"></i>Log out
+            <a class="nav-link" routerLink="/login">
+              <i (click)="authService.authToken = ''" class="fas fa-sign-out-alt"></i>Log out
             </a>
           </li>
         </ul>
@@ -28,18 +31,18 @@
     </nav>
 
     <!-- Main content -->
-    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+    <main class="col-md-9 ml-sm-auto col-lg-10 px-4" role="main">
       <div class="inner-adjust">
 
         <div class="pt-3 pb-2 mb-3 border-bottom">
           <h1 class="h2">User Profile</h1>
         </div>
         <!-- Show user data when logged in -->
-        <div class="row" >
+        <div class="row">
           <div class="col-md-12">
             <div class="media">
-              <img class="align-self-start mr-5 img-thumbnail rounded-circle" src="/assets/profile.png"
-                   alt="Test">
+              <img alt="Test" class="align-self-start mr-5 img-thumbnail rounded-circle"
+                   src="/assets/profile.png">
               <div class="media-body">
                 <h1>Hello: <strong>IDN User</strong></h1>
                 <p>User ID: <strong>xxxxx</strong></p>
